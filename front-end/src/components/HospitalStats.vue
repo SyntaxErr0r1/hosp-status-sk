@@ -1,6 +1,8 @@
 <template>
   <div class="stats-section">
-    <h3>Slovenská Republika</h3>
+    <h3 v-if="!stats" class="skeleton-line skeleton-animation"></h3>
+    <h3 v-else-if="stats.region_info">{{stats.region_info.title}}</h3>
+    <h3 v-else>Slovenská Republika</h3>
       <div class="card-list">
         <card
             title="Lôžka celkovo"
@@ -31,18 +33,7 @@
         <h4 v-if="stats">Posledná aktualizácia: {{stats ? stats.updated_at : null}}</h4>
         <h4 v-if="!stats" class="skeleton-line skeleton-animation"></h4>
     </div>
-    <h3>Zoznam krajov</h3>
-    <ul class="region-list">
-        <li><a href="#ba-region">BA</a></li>
-        <li><a href="#ba-region">TA</a></li>
-        <li><a href="#ba-region">TC</a></li>
-        <li><a href="#ba-region">NI</a></li>
-        <li><a href="#ba-region">ZI</a></li>
-        <li><a href="#ba-region">BC</a></li>
-        <li><a href="#ba-region">PV</a></li>
-        <li><a href="#ba-region">KI</a></li>
-        
-    </ul>
+
 </template>
 
 <script>
@@ -93,15 +84,6 @@ export default {
             box-sizing: border-box;
             margin: 10px;
         }
-        }
-    }
-    .region-list{
-        li {
-            margin-right: 10px;
-            padding-left: 10px;
-            list-style: none;
-            display: inline-block;
-            border-left: 1px solid black;
         }
     }
 </style>

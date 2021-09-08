@@ -26,6 +26,27 @@
     }
   }
 }
+.skeleton-animation{
+  animation: pulse-bg 1s infinite;
+}
+.skeleton-line{
+  background-color: grey;
+  border-radius: 6px;
+}
+.skeleton-line:empty::before {
+  content: "\A0";
+}
+@keyframes pulse-bg {
+        0%{
+            background-color: #dddddd;
+        }
+        50%{
+            background-color: #d1d1d1;
+        }
+        100%{
+            background-color: #dddddd;
+        }
+  }
 </style>
 
 <script>

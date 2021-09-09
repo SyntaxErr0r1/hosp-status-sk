@@ -2,7 +2,7 @@
   "name": "hosp-status-sk-backend",
   "version": "1.0.0",
   "description": "Updates and server covid data from https://data.korona.gov.sk/",
-  "main": "index.js",
+  "main": "./back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "expressjs": "^1.0.1",
-    "hosp-status-sk-backend": "file:..",
     "node-fetch": "^3.0.0",
     "nodemon": "^2.0.12"
   }

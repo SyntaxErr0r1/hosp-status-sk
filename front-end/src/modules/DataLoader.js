@@ -1,5 +1,5 @@
 const dataSource = {
-    protocol: "http",
+    protocol: window.location.hostname == "localhost"?"http":"https",
     host: window.location.hostname+"/api",
 }
 

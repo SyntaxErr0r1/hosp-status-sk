@@ -2,6 +2,9 @@ const express = require('express')
 const cors = require('cors');
 const port = process.env.PORT || 80
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const compression = require('compression');
+
+
 
 // if (!globalThis.fetch) {
 // 	globalThis.fetch = fetch;
@@ -9,6 +12,8 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 const app = express()
 app.use(cors());
 app.options('*', cors());
+
+app.use(compression());
 
 const motherUrl = "https://data.korona.gov.sk" 
 

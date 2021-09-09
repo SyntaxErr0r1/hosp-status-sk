@@ -39,7 +39,7 @@ app.get('/api/*', function(req,res){
     )
 })
 
-app.use('/', express.static('../front-end/dist/'))
+app.use('/', express.static('./front-end/dist/'))
  
 app.listen(port, () => {
     console.log("Server listening at port",port)

@@ -4,7 +4,8 @@
   "description": "Updates and server covid data from https://data.korona.gov.sk/",
   "main": "./back-end/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node back-end/index.js"
   },
   "author": "",
   "license": "ISC",

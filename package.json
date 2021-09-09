@@ -5,7 +5,7 @@
   "main": "./back-end/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node back-end/index.js"
+    "start": "cd front-end && npm install && npm run build && cd .. && node back-end/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors');
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 80
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 // if (!globalThis.fetch) {
@@ -10,7 +10,7 @@ const app = express()
 app.use(cors());
 app.options('*', cors());
 
-const motherUrl = "https://data.korona.gov.sk/api" 
+const motherUrl = "https://data.korona.gov.sk" 
 
 // app.get('/regions', function (req, res) {
 //   fetch(motherUrl+"/regions").then( res => res.json() ).then(out => res.send(out))
@@ -23,9 +23,10 @@ const motherUrl = "https://data.korona.gov.sk/api"
 /**
  * PROXY FOR DATA ACCESS
  */
-app.get('/*', function(req,res){
+app.get('/api/*', function(req,res){
     //console.dir(req)
     const finalUrl = motherUrl + req.originalUrl
+    console.log(finalUrl)
     fetch(finalUrl).then( 
         fetchRes => fetchRes.json() 
     ).then(
@@ -37,6 +38,8 @@ app.get('/*', function(req,res){
         err => res.status(500).send("Internal proxy error!")
     )
 })
+
+app.use('/', express.static('../front-end/dist/'))
  
 app.listen(port, () => {
     console.log("Server listening at port",port)

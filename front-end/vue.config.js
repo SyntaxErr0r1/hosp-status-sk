@@ -1,5 +1,6 @@
 module.exports = {
   pwa: {
-    name: 'Hospital Status SK'
+    name: 'Hospital Status SK',
+    themeColor: '#CE342C'
   }
 }

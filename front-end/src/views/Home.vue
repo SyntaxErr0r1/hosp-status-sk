@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    <h1>Obsadenosť nemocničných lôžok (COVID-19)</h1>
-    <hospital-stats :stats="hospBedsSKNow"></hospital-stats>
+    <h1>Stav nemocničných lôžok (COVID-19)</h1>
+    <hospital-stats :stats="hospBedsSKNow" :showTaken="showTaken"></hospital-stats>
+
+    <input type="checkbox" name="showTaken" id="showTaken" v-model="showTaken">
+    <label for="showTaken">Zobraziť obsadenosť</label>
+
     <h3>Zoznam krajov</h3>
     <ul class="region-list">
         <!-- <li><a href="#ba-region">BA</a></li>
@@ -12,9 +16,11 @@
         <li><a href="#ba-region">BC</a></li>
         <li><a href="#ba-region">PV</a></li>
         <li><a href="#ba-region">KI</a></li> -->
-        <li><a v-for="region in hospBedsRegions" v-bind:key="region.id" v-bind:href="'#region_'+region.id">{{region.region_info.title}}</a></li>
+        <li v-for="region in hospBedsRegions" v-bind:key="region.id"><a v-bind:href="'#region_'+region.id">{{region.region_info.title}}</a></li>
     </ul>
-    <hospital-stats v-for="region in hospBedsRegions" v-bind:key="region.id" v-bind:id="'region_'+region.id" :stats="region" ></hospital-stats>
+    
+    <hospital-stats v-for="region in hospBedsRegions" :showTaken="showTaken" v-bind:key="region.id" v-bind:id="'region_'+region.id" :stats="region" ></hospital-stats>
+    
   </div>
 </template>
 
@@ -32,6 +38,7 @@ export default {
     return {
       hospBedsSKNow: null,
       hospBedsRegions: null,
+      showTaken: false,
     };
   },
 
@@ -60,12 +67,17 @@ h1 {
   margin-bottom: 3rem;
 }
 .region-list{
-    li {
-        margin-right: 10px;
-        padding-left: 10px;
-        list-style: none;
-        display: inline-block;
-        border-left: 1px solid black;
-    }
+  li {
+    margin-right: 10px;
+    padding-left: 10px;
+    list-style: none;
+    display: inline-block;
+    border-left: 1px solid black;
+  }
+}
+@media screen and (max-width:630px) {
+  .region-list .li{
+    display: block;
+  }
 }
 </style>

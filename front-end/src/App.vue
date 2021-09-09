@@ -36,6 +36,8 @@
 .skeleton-line:empty::before {
   content: "\A0";
 }
+.skeleton-200px{max-width: 200px}
+.skeleton-400px{max-width: 400px}
 @keyframes pulse-bg {
         0%{
             background-color: #dddddd;

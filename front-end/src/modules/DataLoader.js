@@ -1,6 +1,6 @@
 const dataSource = {
     protocol: "http",
-    host: "localhost:3000",
+    host: window.location.hostname+"/api",
 }
 
 class DataLoader {
@@ -28,8 +28,6 @@ class DataLoader {
                 fetch(
                     `${dataSource.protocol}://${dataSource.host}/regions/`
                 ).then(res => res.json()).then(regionsList => {
-                    console.log(regionsList)
-                    console.log(hospBedsRegionsNow)
                     for(var i = 0; i < hospBedsRegionsNow.length; i++){
                         const region_id = hospBedsRegionsNow[i].region_id
                         const regionInfo = regionsList.find(reg => reg.id == region_id)
